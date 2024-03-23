@@ -1,0 +1,18 @@
+name: Mock Step Replay
+inputs:
+  duration:
+    description: Duration to sleep
+    required: true
+  return_value:
+    description: Return value to exit with
+    required: true
+description: Mock Step Replay
+runs:
+  using: composite
+  steps:
+    - name: Sleep for the required duration
+      run: sleep ${{ inputs.duration }}
+      shell: bash
+    - name: Exit with the required status
+      run: exit ${{ inputs.return_value }}
+      shell: bash
