@@ -1,0 +1,22 @@
+jobs:
+  job_0:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Build with Jekyll
+      uses: ./.github/actions/mock_step_replay
+      with:
+        duration: 20.0
+        return_value: 0
+    - name: Unit Tests
+      uses: ./.github/actions/mock_step_replay
+      with:
+        duration: 7.0
+        return_value: 1
+    - name: Upload artifact
+      uses: ./.github/actions/mock_step_replay
+      with:
+        duration: 10.0
+        return_value: 0
+'on': workflow_dispatch
